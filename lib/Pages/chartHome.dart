@@ -45,7 +45,7 @@ class _CartHomeState extends State<CartHome> {
           child: Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            height: 400,
+            height: 300,
             width: double.infinity,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -87,7 +87,19 @@ class _CartHomeState extends State<CartHome> {
                     borderColor: Colors.transparent,
                     enableAxisAnimation: true,
 
-                    primaryXAxis: CategoryAxis(),
+                    primaryXAxis: CategoryAxis(
+                      autoScrollingMode: AutoScrollingMode.start,
+                      labelRotation: 270,
+                      // title: AxisTitle(
+                      //   text: 'days',
+                      //   textStyle: const TextStyle(
+                      //     fontSize: 15,
+                      //     fontWeight: FontWeight.normal,
+                      //     color: Colors.black,
+                      //   ),
+                      // ),
+                    ),
+
                     series: <ChartSeries>[
                       LineSeries<VoltageDetails, String>(
                         dataSource: voltage,
@@ -97,6 +109,18 @@ class _CartHomeState extends State<CartHome> {
                             details.voltageCount,
                         color: Colors.black,
                         width: 2,
+                        dataLabelSettings: const DataLabelSettings(
+                          isVisible: true,
+                          labelAlignment: ChartDataLabelAlignment.auto,
+                        ),
+                        markerSettings: const MarkerSettings(
+                          isVisible: true,
+                          height: 10,
+                          width: 10,
+                          shape: DataMarkerType.circle,
+                          borderColor: Colors.black,
+                          borderWidth: 2,
+                        ),
                       ),
                     ],
                   ));

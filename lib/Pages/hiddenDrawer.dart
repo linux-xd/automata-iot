@@ -36,19 +36,19 @@ class _HiddenMenuState extends State<HiddenMenu> {
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
-          name: "S E T T I N G S",
-          baseStyle: myTextStyle,
-          selectedStyle: myTextStyle,
-        ),
-        const settings(),
-      ),
-      ScreenHiddenDrawer(
-        ItemHiddenMenu(
           name: "C H A R T",
           baseStyle: myTextStyle,
           selectedStyle: myTextStyle,
         ),
         const CartHome(),
+      ),
+      ScreenHiddenDrawer(
+        ItemHiddenMenu(
+          name: "S E T T I N G S",
+          baseStyle: myTextStyle,
+          selectedStyle: myTextStyle,
+        ),
+        const settings(),
       ),
     ];
   }
