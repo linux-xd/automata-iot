@@ -13,7 +13,7 @@ class CartHome extends StatefulWidget {
 }
 
 class _CartHomeState extends State<CartHome> {
-  List<SalesDetails> sales = [];
+  List<VoltageDetails> voltage = [];
 
   Future<String> getJasonFromFirebase() async {
     String url = "https://iot-esp-fa661-default-rtdb.firebaseio.com/data.json";
@@ -25,7 +25,7 @@ class _CartHomeState extends State<CartHome> {
     final String jsonString = await getJasonFromFirebase();
     final dynamic jsonResponse = jsonDecode(jsonString);
     for (Map<String, dynamic> i in jsonResponse) {
-      sales.add(SalesDetails.fromJson(i));
+      voltage.add(VoltageDetails.fromJson(i));
     }
   }
 
@@ -89,12 +89,12 @@ class _CartHomeState extends State<CartHome> {
 
                     primaryXAxis: CategoryAxis(),
                     series: <ChartSeries>[
-                      LineSeries<SalesDetails, String>(
-                        dataSource: sales,
-                        xValueMapper: (SalesDetails details, _) =>
-                            details.month,
-                        yValueMapper: (SalesDetails details, _) =>
-                            details.salesCount,
+                      LineSeries<VoltageDetails, String>(
+                        dataSource: voltage,
+                        xValueMapper: (VoltageDetails details, _) =>
+                            details.day,
+                        yValueMapper: (VoltageDetails details, _) =>
+                            details.voltageCount,
                         color: Colors.black,
                         width: 2,
                       ),
@@ -112,15 +112,15 @@ class _CartHomeState extends State<CartHome> {
   }
 }
 
-class SalesDetails {
-  SalesDetails(this.month, this.salesCount);
-  final String month;
-  final int salesCount;
+class VoltageDetails {
+  VoltageDetails(this.day, this.voltageCount);
+  final String day;
+  final int voltageCount;
 
-  factory SalesDetails.fromJson(Map<String, dynamic> parsedJson) {
-    return SalesDetails(
-      parsedJson['month'].toString(),
-      parsedJson['salesCount'],
+  factory VoltageDetails.fromJson(Map<String, dynamic> parsedJson) {
+    return VoltageDetails(
+      parsedJson['day'].toString(),
+      parsedJson['voltageCount'],
     );
   }
 }
