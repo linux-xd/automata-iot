@@ -97,7 +97,6 @@ class _CartHomeState extends State<CartHome> {
                             details.salesCount,
                         color: Colors.black,
                         width: 2,
-                        xAxisName: "Month",
                       ),
                     ],
                   ));
