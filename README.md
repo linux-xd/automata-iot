@@ -1,6 +1,6 @@
 # automata
 
-A new Flutter project.
+A new Home Automation and Monitoring Flutter project.
 
 ## Getting Started
 
